@@ -2,95 +2,140 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* Barber Shop Design System - Professional & Elegant */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core Background Colors */
+    --background: 210 20% 98%;
+    --foreground: 215 25% 27%;
 
+    /* Card & Surface Colors */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 215 25% 27%;
+    --card-elevated: 210 17% 95%;
 
+    /* Interactive Elements */
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 215 25% 27%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Brand Colors - Professional Barbershop */
+    --primary: 214 88% 27%;        /* Deep Professional Blue */
+    --primary-foreground: 0 0% 98%;
+    --primary-light: 214 88% 35%;
+    --primary-glow: 214 100% 70%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Elegant Gold */
+    --secondary: 43 96% 56%;       /* Elegant Gold */
+    --secondary-foreground: 215 25% 27%;
+    --secondary-light: 43 96% 65%;
+    --secondary-dark: 43 96% 45%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Neutral System */
+    --muted: 210 17% 95%;
+    --muted-foreground: 215 16% 47%;
+    
+    --accent: 215 20% 90%;
+    --accent-foreground: 215 25% 27%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Status Colors */
+    --success: 160 84% 39%;        /* Professional Green */
+    --success-foreground: 0 0% 98%;
+    --warning: 25 95% 53%;         /* Warm Orange */
+    --warning-foreground: 215 25% 27%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Interface Elements */
+    --border: 215 20% 82%;
+    --input: 215 20% 82%;
+    --ring: 214 88% 27%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Shadows & Effects */
+    --shadow-elegant: 214 50% 20% / 0.15;
+    --shadow-glow: 214 100% 70% / 0.25;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(214 88% 27%), hsl(214 88% 35%));
+    --gradient-gold: linear-gradient(135deg, hsl(43 96% 45%), hsl(43 96% 65%));
+    --gradient-surface: linear-gradient(180deg, hsl(0 0% 100%), hsl(210 17% 98%));
 
-    --radius: 0.5rem;
+    /* Layout & Animation */
+    --radius: 0.75rem;
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Sidebar Colors */
+    --sidebar-background: 215 25% 27%;     /* Dark Professional */
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 43 96% 56%;         /* Gold Accent */
+    --sidebar-primary-foreground: 215 25% 27%;
+    --sidebar-accent: 215 20% 35%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 215 20% 35%;
+    --sidebar-ring: 214 88% 27%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Core Background Colors - Dark Mode */
+    --background: 215 28% 17%;
+    --foreground: 210 20% 98%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    /* Card & Surface Colors */
+    --card: 215 25% 20%;
+    --card-foreground: 210 20% 98%;
+    --card-elevated: 215 25% 23%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    /* Interactive Elements */
+    --popover: 215 25% 20%;
+    --popover-foreground: 210 20% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    /* Brand Colors - Dark Mode */
+    --primary: 214 100% 70%;       /* Brighter Blue for dark */
+    --primary-foreground: 215 28% 17%;
+    --primary-light: 214 100% 75%;
+    --primary-glow: 214 100% 80%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    /* Secondary - Elegant Gold (adjusted) */
+    --secondary: 43 96% 65%;       /* Brighter Gold */
+    --secondary-foreground: 215 28% 17%;
+    --secondary-light: 43 96% 70%;
+    --secondary-dark: 43 96% 55%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    /* Neutral System */
+    --muted: 215 25% 25%;
+    --muted-foreground: 215 20% 65%;
+    
+    --accent: 215 25% 25%;
+    --accent-foreground: 210 20% 98%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    /* Status Colors */
+    --success: 160 84% 45%;        /* Brighter Green for dark */
+    --success-foreground: 215 28% 17%;
+    --warning: 25 95% 60%;         /* Brighter Orange */
+    --warning-foreground: 215 28% 17%;
+    --destructive: 0 84% 65%;
+    --destructive-foreground: 210 20% 98%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    /* Interface Elements */
+    --border: 215 25% 30%;
+    --input: 215 25% 25%;
+    --ring: 214 100% 70%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Shadows & Effects - Dark Mode */
+    --shadow-elegant: 0 0% 0% / 0.4;
+    --shadow-glow: 214 100% 80% / 0.15;
+
+    /* Sidebar Colors - Dark Mode */
+    --sidebar-background: 215 30% 14%;     /* Darker Professional */
+    --sidebar-foreground: 210 20% 95%;
+    --sidebar-primary: 43 96% 65%;         /* Brighter Gold Accent */
+    --sidebar-primary-foreground: 215 30% 14%;
+    --sidebar-accent: 215 25% 20%;
+    --sidebar-accent-foreground: 210 20% 95%;
+    --sidebar-border: 215 25% 22%;
+    --sidebar-ring: 214 100% 70%;
   }
 }
 
@@ -100,6 +145,139 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-inter;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  /* Beautiful Card Components */
+  .card-elegant {
+    @apply bg-gradient-to-br from-card to-card-elevated border border-border/50 shadow-lg shadow-shadow-elegant backdrop-blur-sm;
+  }
+
+  .card-premium {
+    @apply bg-gradient-to-br from-primary/5 to-secondary/5 border border-primary/20 shadow-xl shadow-primary/10;
+  }
+
+  /* Button Variants */
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary to-primary-light text-primary-foreground shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300;
+  }
+
+  .btn-gold {
+    @apply bg-gradient-to-r from-secondary-dark to-secondary text-secondary-foreground shadow-lg shadow-secondary/25 hover:shadow-xl hover:shadow-secondary/30 transition-all duration-300;
+  }
+
+  .btn-glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 text-white shadow-lg hover:bg-white/20 transition-all duration-300;
+  }
+
+  /* Stats Card */
+  .stats-card {
+    @apply relative overflow-hidden rounded-xl bg-gradient-to-br from-white to-gray-50 p-6 shadow-lg border border-gray-200/50 hover:shadow-xl transition-all duration-300;
+  }
+
+  .stats-card::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br opacity-0 hover:opacity-5 transition-opacity duration-300;
+  }
+
+  /* Sidebar Styles */
+  .sidebar-item {
+    @apply relative flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200 hover:bg-sidebar-accent/10;
+  }
+
+  .sidebar-item.active {
+    @apply bg-sidebar-primary text-sidebar-primary-foreground shadow-lg;
+  }
+
+  .sidebar-item.active::before {
+    content: '';
+    @apply absolute left-0 top-0 bottom-0 w-1 bg-sidebar-primary rounded-r-full;
+  }
+}
+
+@layer utilities {
+  /* Custom Animations */
+  .animate-slide-in {
+    animation: slideIn 0.3s ease-out;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.4s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.2s ease-out;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* Hover Effects */
+  .hover-lift {
+    @apply transition-transform duration-200 hover:-translate-y-1;
+  }
+
+  .hover-glow {
+    @apply transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/20;
+  }
+
+  /* Glass Morphism */
+  .glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+
+  /* Font Weights */
+  .font-inter {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+}
+
+/* Keyframes */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
   }
 }
