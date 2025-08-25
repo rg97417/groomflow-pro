@@ -156,7 +156,7 @@
 @layer components {
   /* Beautiful Card Components */
   .card-elegant {
-    @apply bg-gradient-to-br from-card to-card-elevated border border-border/50 shadow-lg shadow-shadow-elegant backdrop-blur-sm;
+    @apply bg-gradient-to-br from-card to-card-elevated border border-border/50 shadow-lg shadow-elegant backdrop-blur-sm;
   }
 
   .card-premium {
