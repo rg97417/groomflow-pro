@@ -10,7 +10,8 @@ import {
   Settings, 
   Crown, 
   Menu,
-  X
+  X,
+  CreditCard
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -56,6 +57,12 @@ const menuItems = [
     title: "Relatórios",
     icon: BarChart3,
     path: "/reports",
+    color: "text-sidebar-primary"
+  },
+  {
+    title: "Pagamentos",
+    icon: CreditCard,
+    path: "/payments",
     color: "text-sidebar-primary"
   },
   {
