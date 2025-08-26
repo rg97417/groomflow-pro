@@ -11,10 +11,14 @@ import {
   Crown, 
   Menu,
   X,
-  CreditCard
+  CreditCard,
+  LogOut
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/contexts/AuthContext";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useProfile } from "@/hooks/useProfile";
 
 const menuItems = [
   {
@@ -79,6 +83,8 @@ export function Sidebar({}: SidebarProps) {
   const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
+  const { user, signOut } = useAuth();
+  const { profile } = useProfile();
 
   return (
     <>
@@ -164,17 +170,39 @@ export function Sidebar({}: SidebarProps) {
 
         {/* Footer */}
         <div className="p-4 border-t border-sidebar-border">
-          <div className={cn("flex items-center gap-3", collapsed && "justify-center")}>
-            <div className="w-8 h-8 bg-gradient-gold rounded-full flex items-center justify-center">
-              <span className="text-secondary-foreground font-semibold text-sm">A</span>
-            </div>
+          <div className={cn("flex items-center gap-3 mb-3", collapsed && "justify-center")}>
+            <Avatar className="w-8 h-8">
+              <AvatarImage src={profile?.avatar_url || user?.user_metadata?.avatar_url} />
+              <AvatarFallback className="bg-gradient-gold text-secondary-foreground text-sm">
+                {profile?.full_name?.split(' ').map(n => n[0]).join('') || 
+                 user?.email?.slice(0, 2).toUpperCase() || 'BP'}
+              </AvatarFallback>
+            </Avatar>
             {!collapsed && (
-              <div>
-                <p className="text-sidebar-foreground font-medium text-sm">Admin User</p>
-                <p className="text-sidebar-foreground/70 text-xs">admin@barberpro.com</p>
+              <div className="flex-1">
+                <p className="text-sidebar-foreground font-medium text-sm truncate">
+                  {profile?.full_name || user?.user_metadata?.full_name || 'Usuário'}
+                </p>
+                <p className="text-sidebar-foreground/70 text-xs truncate capitalize">
+                  {profile?.role || 'Admin'}
+                </p>
               </div>
             )}
           </div>
+          
+          {/* Logout Button */}
+          <Button
+            variant="ghost"
+            size="sm"
+            className={cn(
+              "w-full text-sidebar-foreground hover:bg-sidebar-accent/20",
+              collapsed ? "justify-center px-2" : "justify-start gap-2"
+            )}
+            onClick={signOut}
+          >
+            <LogOut className="h-4 w-4" />
+            {!collapsed && "Sair"}
+          </Button>
         </div>
       </div>
     </>
